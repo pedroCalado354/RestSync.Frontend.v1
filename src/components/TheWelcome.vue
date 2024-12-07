@@ -7,6 +7,16 @@ import CommunityIcon from './icons/IconCommunity.vue'
 import SupportIcon from './icons/IconSupport.vue'
 </script>
 
+<script>
+export default {
+  methods: {
+    logout() {
+      this.$router.push('/') // Redirect to Login page
+    },
+  },
+}
+</script>
+
 <template>
   <WelcomeItem>
     <template #icon>
@@ -87,4 +97,6 @@ import SupportIcon from './icons/IconSupport.vue'
     us by
     <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
   </WelcomeItem>
+
+  <v-btn @click="logout" color="error" class="mt-5" block>Logout</v-btn>
 </template>

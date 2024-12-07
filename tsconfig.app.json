@@ -1,6 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": [
+    "env.d.ts", // Includes the `env.d.ts` file, typically used to define TypeScript environment variables or custom types for the project.
+    "src/**/*", // Includes all files and directories recursively inside the `src` folder, regardless of file type or extension.
+    "src/**/*.vue", // Specifically includes all `.vue` files within the `src` folder and its subdirectories.
+    "src/**/*.ts", // Specifically includes all `.ts` (TypeScript) files within the `src` folder and its subdirectories.
+    "./*.ts" // Includes all `.ts` (TypeScript) files in the root project directory.
+  ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,
