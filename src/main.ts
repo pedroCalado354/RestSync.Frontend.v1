@@ -1,29 +1,36 @@
-import './assets/main.css'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import router from './router'
 import App from './App.vue'
+import '@mdi/font/css/materialdesignicons.css' // Material Design Icons
+import 'vuetify/styles' // Vuetify styles
 
 //primevue
 import PrimeVue from 'primevue/config'
 
 // Vuetify
-import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
-const app = createApp(App)
+// Import Labs Components
+import { VCalendar } from 'vuetify/labs/VCalendar'
 
+// Create Vuetify instance
 const vuetify = createVuetify({
-  components,
+  components: {
+    ...components,
+    VCalendar, // Register VCalendar
+  },
   directives,
 })
-app.use(vuetify)
-app.use(PrimeVue)
 
+// Create Vue App
+const app = createApp(App)
+
+app.use(vuetify)
 app.use(createPinia())
 app.use(router)
+app.use(PrimeVue)
 
 app.mount('#app')

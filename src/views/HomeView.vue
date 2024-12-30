@@ -19,7 +19,8 @@ export default {
       this.error = null // Reset error
       try {
         const response = await axios.get(
-          'https://restsyncapi20241207182039.azurewebsites.net//WeatherForecast/GetEmployees',
+          // 'https://restsyncapi20241207182039.azurewebsites.net//WeatherForecast/GetEmployees',
+          'https://localhost:7093/WeatherForecast/GetEmployees',
         )
         this.employees = response.data // Populate employees list
       } catch (err) {
@@ -45,6 +46,7 @@ export default {
     <!-- Employees List -->
     <v-card v-if="!loading && employees.length" outlined>
       <v-card-title>Employee List</v-card-title>
+
       <v-divider></v-divider>
       <v-list>
         <v-list-item v-for="employee in employees" :key="employee.employeeId">
