@@ -1,222 +1,29 @@
-export const employees = [
-  // Day 1 - 2024-12-29
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2024-12-29',
-    startDate: '2024-12-29T09:00:00',
-    endDate: '2024-12-29T17:00:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2024-12-29',
-    startDate: '2024-12-29T08:30:00',
-    endDate: '2024-12-29T16:30:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2024-12-29',
-    startDate: null,
-    endDate: null,
-  },
-  // Day 2 - 2024-12-30
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2024-12-30',
-    startDate: '2024-12-30T08:30:00',
-    endDate: '2024-12-30T16:30:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2024-12-30',
-    startDate: '2024-12-30T08:30:00',
-    endDate: '2024-12-30T16:30:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2024-12-30',
-    startDate: null,
-    endDate: null,
-  },
-  // Day 3 - 2024-12-31
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2024-12-31',
-    startDate: '2024-12-31T10:00:00',
-    endDate: '2024-12-31T18:00:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2024-12-31',
-    startDate: '2024-12-31T09:00:00',
-    endDate: '2024-12-31T17:00:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    Date: '2024-12-31',
-    startDate: '2024-12-31T09:30:00',
-    endDate: '2024-12-31T17:30:00',
-  },
-  // Day 4 - 2025-01-01
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2025-01-01',
-    startDate: '2025-01-01T09:00:00',
-    endDate: '2025-01-01T17:00:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2025-01-01',
-    startDate: '2025-01-01T08:00:00',
-    endDate: '2025-01-01T16:00:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2025-01-01',
-    startDate: '2025-01-01T10:00:00',
-    endDate: '2025-01-01T18:00:00',
-  },
-  // Day 5 - 2025-01-02
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2025-01-02',
-    startDate: null,
-    endDate: '2025-01-02T17:30:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2025-01-02',
-    startDate: null,
-    endDate: '2025-01-02T17:30:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2025-01-02',
-    startDate: null,
-    endDate: null,
-  },
-  // Day 6 - 2025-01-03
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2025-01-03',
-    startDate: '2025-01-03T08:30:00',
-    endDate: '2025-01-03T16:30:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2025-01-03',
-    startDate: null,
-    endDate: '2025-01-02T17:30:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2025-01-03',
-    startDate: '2025-01-03T09:00:00',
-    endDate: '2025-01-03T17:00:00',
-  },
-  // Day 7 - 2025-01-04
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2025-01-04',
-    startDate: '2025-01-04T09:00:00',
-    endDate: '2025-01-04T17:00:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2025-01-04',
-    startDate: '2025-01-04T08:30:00',
-    endDate: '2025-01-04T16:30:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2025-01-04',
-    startDate: null,
-    endDate: null,
-  },
-  // Day 8 - 2025-01-05
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2025-01-05',
-    startDate: '2025-01-05T09:00:00',
-    endDate: '2025-01-05T17:00:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2025-01-05',
-    startDate: '2025-01-05T08:30:00',
-    endDate: '2025-01-05T16:30:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2025-01-05',
-    startDate: '2025-01-05T10:00:00',
-    endDate: '2025-01-05T18:00:00',
-  },
-  // Day 9 - 2025-01-06
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2025-01-06',
-    startDate: '2025-01-06T09:00:00',
-    endDate: '2025-01-06T17:00:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2025-01-06',
-    startDate: '2025-01-06T08:30:00',
-    endDate: '2025-01-06T16:30:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2025-01-06',
-    startDate: null,
-    endDate: null,
-  },
-  // Day 10 - 2025-01-07
-  {
-    name: 'Lisandra',
-    schedules: {},
-    date: '2025-01-07',
-    startDate: null,
-    endDate: '2025-01-02T17:30:00',
-  },
-  {
-    name: 'João',
-    schedules: {},
-    date: '2025-01-07',
-    startDate: null,
-    endDate: '2025-01-02T17:30:00',
-  },
-  {
-    name: 'Maria',
-    schedules: {},
-    date: '2025-01-07',
-    startDate: null,
-    endDate: null,
-  },
-]
+export const employees = Array.from({ length: 31 }, (_, index) => {
+  const date = new Date(2024, 11, index + 1) // December 2024
+  const formattedDate = date.toISOString().split('T')[0] // Format as YYYY-MM-DD
+
+  return [
+    {
+      title: `Lisandra Miguel`,
+      with: 'Role A',
+      isDayOff: false,
+      time: { start: `${formattedDate} 08:00`, end: `${formattedDate} 16:00` }, // Morning shift
+      color: 'blue',
+      isEditable: true,
+      id: `${index * 2 + 1}`,
+      description: `Morning shift for Lisandra Miguel ${index * 2 + 1}.`,
+      daysOff: [], // No predefined days off for simplicity
+    },
+    {
+      title: `Pedro Calado`,
+      with: 'Role B',
+      isDayOff: false,
+      time: { start: `${formattedDate} 16:00`, end: `${formattedDate} 23:59` }, // Evening shift
+      color: 'green',
+      isEditable: true,
+      id: `${index * 2 + 2}`,
+      description: `Evening shift for Pedro Calado ${index * 2 + 2}.`,
+      daysOff: [],
+    },
+  ]
+}).flat() // Flatten the array to have a single array with all employees

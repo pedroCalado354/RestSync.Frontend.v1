@@ -16,11 +16,20 @@ import * as directives from 'vuetify/directives'
 // Import Labs Components
 import { VCalendar } from 'vuetify/labs/VCalendar'
 
+// Import VueDatePicker
+import VueDatePicker from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
+
+// Import FullCalendar
+import FullCalendar from '@fullcalendar/vue3'
+
 // Create Vuetify instance
 const vuetify = createVuetify({
   components: {
     ...components,
-    VCalendar, // Register VCalendar
+    VCalendar,
+    VueDatePicker,
+    FullCalendar,
   },
   directives,
 })

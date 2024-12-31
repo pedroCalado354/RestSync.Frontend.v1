@@ -13,14 +13,22 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/vue3": "^6.1.15",
     "@mdi/font": "^7.4.47",
     "@primevue/themes": "^4.2.5",
+    "@schedule-x/theme-default": "^2.12.1",
+    "@schedule-x/vue": "^2.11.1",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
+    "@vuepic/vue-datepicker": "^10.0.0",
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
     "pinia": "^2.2.6",
     "primevue": "^4.2.5",
+    "qalendar": "^3.9.0",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
   },

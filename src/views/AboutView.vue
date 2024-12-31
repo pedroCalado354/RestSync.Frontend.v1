@@ -1,123 +1,144 @@
 <template>
-  <div class="calendar-container">
-    <v-sheet class="d-flex align-center justify-space-between toolbar" tile>
-      <v-select
-        v-model="type"
-        :items="types"
-        class="ma-2"
-        label="View Mode"
-        variant="outlined"
-        dense
-        hide-details
-      ></v-select>
-      <v-select
-        v-model="weekday"
-        :items="weekdays"
-        class="ma-2"
-        label="Weekdays"
-        variant="outlined"
-        dense
-        hide-details
-      ></v-select>
-    </v-sheet>
-    <v-sheet class="calendar-sheet">
-      <v-calendar
-        ref="calendar"
-        v-model="value"
-        :events="events"
-        :view-mode="type"
-        :weekdays="weekday"
-        :event-color="getEventColor"
-      ></v-calendar>
-    </v-sheet>
+  <div class="calendar-container is-light-mode">
+    <Qalendar
+      :events="events"
+      :config="config"
+      @event-was-clicked="handleEventClick"
+      @updated-mode="handleModeUpdate"
+      @edit-event="handleEditEvent"
+      @delete-event="handleDeleteEvent"
+      @date-was-clicked="handleDateClick"
+    >
+      <!-- Custom layout for events in week and day views -->
+      <template #weekDayEvent="eventProps">
+        <div class="custom-event-card">
+          <div class="event-time">{{ formatTime(eventProps.eventData.time) }}</div>
+          <div class="event-title">{{ eventProps.eventData.title }}</div>
+          <div class="event-person">{{ eventProps.eventData.person }}</div>
+        </div>
+      </template>
+
+      <!-- Custom layout for events in month view -->
+      <template #monthEvent="monthEventProps">
+        <div class="custom-event-card">
+          <div class="event-time">{{ formatTime(monthEventProps.eventData.time) }}</div>
+          <div class="event-title">{{ monthEventProps.eventData.title }}</div>
+          <div class="event-person">{{ monthEventProps.eventData.person }}</div>
+        </div>
+      </template>
+    </Qalendar>
   </div>
 </template>
 
 <script>
-import { useDate } from 'vuetify'
+import { Qalendar } from 'qalendar'
 import { employees as employeeData } from '@/data/employeesScheduleData.js'
 
 export default {
-  data: () => ({
-    type: 'month',
-    types: ['month', 'week', 'day'],
-    weekday: [0, 1, 2, 3, 4, 5, 6],
-    weekdays: [
-      { title: 'Sun - Sat', value: [0, 1, 2, 3, 4, 5, 6] },
-      { title: 'Mon - Sun', value: [1, 2, 3, 4, 5, 6, 0] },
-      { title: 'Mon - Fri', value: [1, 2, 3, 4, 5] },
-      { title: 'Mon, Wed, Fri', value: [1, 3, 5] },
-    ],
-    value: [new Date()],
-    events: [],
-    colors: {
-      work: 'green',
-      off: 'red',
-    },
-  }),
-  mounted() {
-    const adapter = useDate()
-    this.getEvents({
-      start: adapter.startOfDay(adapter.startOfMonth(new Date())),
-      end: adapter.endOfDay(adapter.endOfMonth(new Date())),
-    })
+  components: {
+    Qalendar,
+  },
+
+  data() {
+    return {
+      events: employeeData.map((employee) => ({
+        title: employee.title,
+        with: employee.with,
+        time: { start: employee.time.start, end: employee.time.end },
+        colorScheme: employee.isDayOff ? 'off' : 'sports',
+        isEditable: true,
+        id: employee.id,
+        description: employee.description,
+      })),
+      config: {
+        week: {
+          // Takes the value 'sunday' or 'monday'
+          // However, if startsOn is set to 'sunday' and nDays to 5, the week displayed will be Monday - Friday
+          startsOn: 'monday',
+          // Takes the values 5 or 7.
+          nDays: 7,
+          // Scroll to a certain hour on mounting a week. Takes any value from 0 to 23.
+          // This option is not compatible with the 'dayBoundaries'-option, and will simply be ignored if custom day boundaries are set.
+          scrollToHour: 5,
+        },
+        defaultMode: 'month',
+        style: {
+          colorSchemes: {
+            sports: {
+              color: '#fff',
+              backgroundColor: 'green',
+            },
+            off: {
+              color: 'black',
+              backgroundColor: '#FF0000',
+            },
+          },
+        },
+      },
+    }
   },
   methods: {
-    getEvents({ start, end }) {
-      const events = []
-
-      employeeData.forEach((employee) => {
-        const eventColor =
-          employee.startDate && employee.endDate ? this.colors.work : this.colors.off
-        const title =
-          employee.startDate && employee.endDate
-            ? `${employee.name}: ${employee.startDate.split('T')[1]} - ${employee.endDate.split('T')[1]}`
-            : `${employee.name}: Off`
-
-        events.push({
-          title,
-          start: new Date(employee.startDate || employee.date),
-          end: new Date(employee.endDate || employee.date),
-          color: eventColor,
-          allDay: false,
-        })
-      })
-
-      this.events = events
+    // Triggered when an event is clicked
+    handleEventClick(eventDetails) {
+      console.log('Event was clicked:', eventDetails)
+      // Implement logic to view details, e.g., open a modal or display details
     },
-    getEventColor(event) {
-      return event.color
+
+    // Triggered when the user updates the mode
+    handleModeUpdate({ mode, period }) {
+      console.log('Mode updated:', mode, 'Period:', period)
+      // Implement logic to update the view (e.g., switch between month/week/day views)
+    },
+
+    // Triggered when the user clicks the edit icon
+    handleEditEvent(eventDetails) {
+      console.log('Edit event:', eventDetails)
+      // Implement logic to edit the event (e.g., open an event edit form)
+    },
+
+    // Triggered when the user clicks the delete icon
+    handleDeleteEvent(eventDetails) {
+      console.log('Delete event:', eventDetails)
+      // Implement logic to confirm and delete the event
+    },
+
+    // Triggered when the user clicks on a date in month mode
+    handleDateClick(date) {
+      console.log('Date was clicked:', date)
+      // Implement logic to create an event or view events for the selected date
     },
   },
 }
 </script>
 
-<style scoped>
+<style>
+@import 'qalendar/dist/style.css';
+/* General container styling */
 .calendar-container {
-  max-width: 90%;
-  margin: 20px auto;
+  max-width: 80%; /* Limits the width to 80% of the page */
+  margin: 20px auto; /* Centers the calendar and adds vertical spacing */
+  padding: 20px; /* Adds internal spacing */
+  background-color: white; /* Light background color for the container */
+  border-radius: 12px; /* Rounded edges for the container */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+}
+.calendar-month__weekday {
+  position: relative;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   background-color: #f9f9f9;
 }
 
-.toolbar {
-  background-color: #fafafa;
-  border-bottom: 1px solid #ddd;
-}
-
-.calendar-sheet {
-  margin: 10px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  background-color: white;
-}
-
-.v-calendar {
-  height: auto;
-  min-height: 400px;
-  border-radius: 8px;
+.calendar-month__day-date {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 2px 5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 </style>
