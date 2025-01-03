@@ -6,8 +6,10 @@ export const employees = Array.from({ length: 31 }, (_, index) => {
     {
       title: `Lisandra Miguel`,
       with: 'Role A',
-      isDayOff: false,
+      isDayOff: true,
       time: { start: `${formattedDate} 08:00`, end: `${formattedDate} 16:00` }, // Morning shift
+      start: `${formattedDate} 08:00`, // For the tooltip
+      end: `${formattedDate} 16:00`, // For the tooltip
       color: 'blue',
       isEditable: true,
       id: `${index * 2 + 1}`,
@@ -19,6 +21,8 @@ export const employees = Array.from({ length: 31 }, (_, index) => {
       with: 'Role B',
       isDayOff: false,
       time: { start: `${formattedDate} 16:00`, end: `${formattedDate} 23:59` }, // Evening shift
+      start: `${formattedDate} 08:00`, // For the tooltip
+      end: `${formattedDate} 16:00`, // For the tooltip
       color: 'green',
       isEditable: true,
       id: `${index * 2 + 2}`,

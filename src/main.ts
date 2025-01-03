@@ -5,9 +5,6 @@ import App from './App.vue'
 import '@mdi/font/css/materialdesignicons.css' // Material Design Icons
 import 'vuetify/styles' // Vuetify styles
 
-//primevue
-import PrimeVue from 'primevue/config'
-
 // Vuetify
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
@@ -15,6 +12,8 @@ import * as directives from 'vuetify/directives'
 
 // Import Labs Components
 import { VCalendar } from 'vuetify/labs/VCalendar'
+import { VDateInput } from 'vuetify/labs/VDateInput'
+import { VTimePicker } from 'vuetify/labs/VTimePicker'
 
 // Import VueDatePicker
 import VueDatePicker from '@vuepic/vue-datepicker'
@@ -28,8 +27,9 @@ const vuetify = createVuetify({
   components: {
     ...components,
     VCalendar,
+    VDateInput,
+    VTimePicker,
     VueDatePicker,
-    FullCalendar,
   },
   directives,
 })
@@ -40,6 +40,5 @@ const app = createApp(App)
 app.use(vuetify)
 app.use(createPinia())
 app.use(router)
-app.use(PrimeVue)
 
 app.mount('#app')
